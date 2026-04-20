@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fat Arrow Function Practice addeventlistener</title>
+  </head>
+  <body>
+    <input type="text" id="input" placeholder="Type something..." />
+    <p id="output"></p>
+    <p class="thanks"></p>
+
+    <script>
+      const input = document.getElementById("input");
+      const output = document.getElementById("output");
+      const thanks = document.querySelector(".thanks");
+
+      // নরমাল ফাঙ্কশন ব্যবহার করে ইভেন্ট লিসেনার লিখা হচ্ছে
+      function show() {
+        output.innerHTML = this.value; // এখানে this.value ব্যবহার করা হচ্ছে কারণ নরমাল ফাঙ্কশনে this ইভেন্ট টার্গেটকে নির্দেশ করে
+        setTimeout(function () {
+          thanks.innerHTML = `You have typed: ${this.value}`; // এখানে this.value কাজ করবে না কারণ setTimeout এর ভিতরের ফাঙ্কশনে this গ্লোবাল অবজেক্টকে নির্দেশ করে, তাই এটি undefined হবে
+        }, 1000);
+      }
+
+      //   input.addEventListener("input", show);
+
+      function showWorking() {
+        output.innerHTML = this.value;
+        setTimeout(() => {
+          thanks.innerHTML = `You have typed: ${this.value}`; // এখানে this.value কাজ করবে কারণ অ্যারো ফাঙ্কশনে this বাইন্ডিং নেই, তাই এটি লেক্সিক্যাল this কে নির্দেশ করে, যা showWorking ফাঙ্কশনের this এর মান হবে
+        }, 1000);
+      }
+      input.addEventListener("input", showWorking);
+    </script>
+  </body>
+</html>
