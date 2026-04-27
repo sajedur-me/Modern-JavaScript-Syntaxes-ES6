@@ -8,5 +8,9 @@ console.log(myFunction()); // Output: 1
 console.log(myFunction(5)); // Output: 5
 
 
+// তাছারাও, ব্যবহার করা যেতে পারে ডিফল্ট প্যারামিটার হিসাবে একটি ফাংশন। বাস্তব জীবনে, এটি একটি সাধারণ প্যাটার্ন যেখানে একটি ফাংশন অন্য একটি ফাংশনকে ডিফল্ট প্যারামিটার হিসাবে গ্রহণ করে।
 
+function defaultFunction() {
+    return "This is the default function.";
+}
 
